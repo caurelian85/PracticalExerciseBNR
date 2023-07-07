@@ -48,6 +48,11 @@ public partial class TestscursnetcoreContext : DbContext
             entity.Property(e => e.Idcustomer).HasColumnName("IDCustomer");
             entity.Property(e => e.Idbank).HasColumnName("IDBank");
             entity.Property(e => e.NameCustomer).HasMaxLength(100);
+
+            entity.HasOne(d => d.IdbankNavigation).WithMany(p => p.Customers)
+                .HasForeignKey(d => d.Idbank)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Customer_Bank");
         });
 
         modelBuilder.Entity<Department>(entity =>

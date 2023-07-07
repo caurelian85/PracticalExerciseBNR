@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace PracticalExerciseBNR_DAL;
+﻿namespace PracticalExerciseBNR_DAL;
 
 public partial class Customer
 {
@@ -16,4 +13,6 @@ public partial class Customer
     public int? CreditAmount { get; set; }
 
     public int? DepositAmount { get; set; }
+
+    public virtual Bank IdbankNavigation { get; set; } = null!;
 }

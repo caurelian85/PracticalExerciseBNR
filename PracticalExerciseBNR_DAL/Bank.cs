@@ -8,4 +8,6 @@ public partial class Bank
     public int Idbank { get; set; }
 
     public string NameBank { get; set; } = null!;
+
+    public virtual ICollection<Customer> Customers { get; set; } = new List<Customer>();
 }

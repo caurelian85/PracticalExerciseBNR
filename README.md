@@ -9,7 +9,7 @@ Procesul de scaffolding
  - dotnet add package Microsoft.EntityFrameworkCore.SqlServer
  - dotnet add package Microsoft.EntityFrameworkCore.Tools
  Comanda pentru crearea modelelor:
- - dotnet ef dbcontext scaffold "Data Source=localhost;Initial Catalog=testscursnetcore;Trusted_Connection=True;TrustServerCertificate=true;MultipleActiveResultSets=true;" Microsoft.EntityFrameworkCore.SqlServer
+ - dotnet ef dbcontext scaffold "Data Source=localhost;Initial Catalog=testscursnetcore;Trusted_Connection=True;TrustServerCertificate=true;MultipleActiveResultSets=true;" Microsoft.EntityFrameworkCore.SqlServer (--force)
  - dotnet new install Microsoft.EntityFrameworkCore.Templates
  - dotnet new ef-templates
  

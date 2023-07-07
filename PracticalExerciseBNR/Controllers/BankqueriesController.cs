@@ -4,19 +4,17 @@
 [ApiController]
 public class BankqueriesController : ControllerBase
 {
-    private readonly TestscursnetcoreContext _context;
-        public BankqueriesController(TestscursnetcoreContext context)
+    private BankqueriesRepository _bankRepo;
+    public BankqueriesController()
     {
-        _context = context;
+        _bankRepo = new BankqueriesRepository();
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Bank>>> GetBanks()
+    public List<BankModels> GetBanks()
     {
-        if(_context.Banks != null)
-        {
-            return await _context.Banks.ToListAsync();  
-        }
-        return NotFound();
+        var result = _bankRepo.GetAllCustomers().ToList();
+
+        return result;
     }
 }
