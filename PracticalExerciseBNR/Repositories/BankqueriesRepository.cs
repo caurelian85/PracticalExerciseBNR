@@ -1,4 +1,6 @@
-﻿namespace PracticalExerciseBNR.Repositories;
+﻿using System.Linq;
+
+namespace PracticalExerciseBNR.Repositories;
 
 public class BankqueriesRepository
 {
@@ -8,7 +10,7 @@ public class BankqueriesRepository
         context = new TestscursnetcoreContext();
     }
 
-    public IEnumerable<BankModels> GetAllCustomers()
+    public IEnumerable<BankModels> GetDebtorCustomers()
     {
         if (context == null)
         {
@@ -40,5 +42,25 @@ public class BankqueriesRepository
         }
 
         return result;
+    }
+
+    public IEnumerable<CustomerDebtorModels> GetCustomersWithMoreCredits()
+    {
+        if (context == null)
+        {
+            ArgumentNullException.ThrowIfNull(context);
+        }
+
+        IQueryable<CustomerDebtorModels>? query = from c in context.Customers
+                                                  join b in context.Banks on c.Idbank equals b.Idbank
+                                                  group c by new { c.NameCustomer } into g
+                                                  where g.Count() >= 2
+                                                  orderby g.Key.NameCustomer
+                                                  select new CustomerDebtorModels
+                                                  {
+                                                      CustomerName = g.Key.NameCustomer,
+                                                  };
+
+        return query;
     }
 }

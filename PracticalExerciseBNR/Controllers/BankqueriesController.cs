@@ -1,6 +1,6 @@
 ﻿namespace PracticalExerciseBNR.Controllers;
 
-[Route("api/[controller]")]
+[Route("api/[controller]/[action]")]
 [ApiController]
 public class BankqueriesController : ControllerBase
 {
@@ -11,10 +11,14 @@ public class BankqueriesController : ControllerBase
     }
 
     [HttpGet]
-    public List<BankModels> GetBanks()
+    public List<BankModels> GetBanksAndDebtors()
     {
-        var result = _bankRepo.GetAllCustomers().ToList();
+        return _bankRepo.GetDebtorCustomers().ToList();
+    }
 
-        return result;
+    [HttpGet]
+    public List<CustomerDebtorModels> GetDebtorsAtMoreBanks()
+    {
+        return _bankRepo.GetCustomersWithMoreCredits().ToList();
     }
 }

@@ -12,3 +12,9 @@ public class CustomerModels
     public string CustomerName { get; set; }
     public int? CreditAmount{ get; set; }
 }
+
+public class CustomerDebtorModels
+{
+    public string CustomerName { get; set; }
+    //public List<string> BankName { get; set; }
+}
