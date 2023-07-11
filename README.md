@@ -13,3 +13,5 @@ Procesul de scaffolding
  - dotnet new install Microsoft.EntityFrameworkCore.Templates
  - dotnet new ef-templates
  
+ 
+ 3. db script: schema and data -> DB_script.sql.bak

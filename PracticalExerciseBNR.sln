@@ -8,9 +8,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PracticalExerciseBNR_DAL", "PracticalExerciseBNR_DAL\PracticalExerciseBNR_DAL.csproj", "{FF0D0B44-A34B-4619-A424-04CF613AED0D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D0F6E31A-F155-4EC5-B422-BD1781D8DCA3}"
-	ProjectSection(SolutionItems) = preProject
-		DB_script.sql = DB_script.sql
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
