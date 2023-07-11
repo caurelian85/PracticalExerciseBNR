@@ -13,6 +13,16 @@ public class CustomerModels
     public int? CreditAmount{ get; set; }
 }
 
+public class CustomerDetailsModels
+{
+    public int Id { get; set; }
+    public string CustomerName { get; set; }
+    public int? CreditAmount { get; set; }
+    public int CurrentAmount{ get; set; }
+    public int? DepositAmount { get; set; }
+    public string BankName { get; set; }
+}
+
 public class CustomerDebtorModels
 {
     public string CustomerName { get; set; }

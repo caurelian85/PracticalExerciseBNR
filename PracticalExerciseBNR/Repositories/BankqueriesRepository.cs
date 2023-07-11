@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-namespace PracticalExerciseBNR.Repositories;
+﻿namespace PracticalExerciseBNR.Repositories;
 
 public class BankqueriesRepository
 {
@@ -62,5 +60,52 @@ public class BankqueriesRepository
                                                   };
 
         return query;
+    }
+
+    public IEnumerable<CustomerDetailsModels> CustomerDetails(string customerName)
+    {
+        var customerDetails = context.Customers.Where(p => p.NameCustomer == customerName);
+        ArgumentNullException.ThrowIfNull(customerDetails);
+        var customerDetailsModel = new List<CustomerDetailsModels>();
+        foreach (var item in customerDetails)
+        {
+            customerDetailsModel.Add(new CustomerDetailsModels
+            {
+                CustomerName = item.NameCustomer,
+                CreditAmount = item.CreditAmount,
+                BankName = context.Banks.FirstOrDefault(b => b.Idbank == item.Idbank)!.NameBank,
+                CurrentAmount = item.CurrentAmount,
+                DepositAmount = item.DepositAmount,
+                Id = item.Idcustomer
+            });
+        }
+        return customerDetailsModel;
+    }
+
+    public bool CreditRelocate(string customerName, string firstBank, string secondBank, long maxDebit)
+    {
+        Bank? stBank = context.Banks.FirstOrDefault(b => b.NameBank == firstBank);
+        Bank? ndBank = context.Banks.FirstOrDefault(b => b.NameBank == secondBank);
+        ArgumentNullException.ThrowIfNull(stBank);
+        ArgumentNullException.ThrowIfNull(ndBank);
+
+        Customer? firstCustomerCredit = context.Customers.FirstOrDefault(p => p.NameCustomer == customerName && p.Idbank == stBank.Idbank);
+        ArgumentNullException.ThrowIfNull(firstCustomerCredit);
+
+
+        Customer? secondCustomerCredit = context.Customers.FirstOrDefault(p => p.NameCustomer == customerName && p.Idbank == ndBank.Idbank);
+        ArgumentNullException.ThrowIfNull(secondCustomerCredit);
+
+        secondCustomerCredit.CreditAmount += firstCustomerCredit.CreditAmount == null ? 0 : firstCustomerCredit.CreditAmount;
+        secondCustomerCredit.CurrentAmount += firstCustomerCredit.CurrentAmount;
+        secondCustomerCredit.DepositAmount += firstCustomerCredit.DepositAmount == null ? 0 : firstCustomerCredit.DepositAmount;
+
+        if (secondCustomerCredit.CreditAmount > maxDebit)
+            return false;
+        context.Remove(firstCustomerCredit);
+        context.Customers.Update(secondCustomerCredit);
+        context.SaveChangesAsync();
+        return true;
+
     }
 }

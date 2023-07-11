@@ -1,6 +1,6 @@
 ﻿namespace PracticalExerciseBNR_DAL;
 
-public partial class Customer
+public partial class Customer //:IValidatableObject
 {
     public int Idcustomer { get; set; }
 
@@ -15,4 +15,13 @@ public partial class Customer
     public int? DepositAmount { get; set; }
 
     public virtual Bank IdbankNavigation { get; set; } = null!;
+
+    /*public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+    {
+        //422 Unprocessable Entity
+        if (this.CreditAmount > 5000)
+        { 
+            yield return new ValidationResult("422 Unprocessable Entity! MaxDebt exceeded!");
+        }
+    }*/
 }
