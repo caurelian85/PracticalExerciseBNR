@@ -3,9 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33801.468
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PracticalExerciseBNR", "PracticalExerciseBNR\PracticalExerciseBNR.csproj", "{E85AF515-BEE8-4901-B6E4-1D36A0B47803}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PracticalExerciseBNR", "PracticalExerciseBNR\PracticalExerciseBNR.csproj", "{E85AF515-BEE8-4901-B6E4-1D36A0B47803}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PracticalExerciseBNR_DAL", "PracticalExerciseBNR_DAL\PracticalExerciseBNR_DAL.csproj", "{FF0D0B44-A34B-4619-A424-04CF613AED0D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PracticalExerciseBNR_DAL", "PracticalExerciseBNR_DAL\PracticalExerciseBNR_DAL.csproj", "{FF0D0B44-A34B-4619-A424-04CF613AED0D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D0F6E31A-F155-4EC5-B422-BD1781D8DCA3}"
+	ProjectSection(SolutionItems) = preProject
+		DB_script.sql = DB_script.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
